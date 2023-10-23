@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Appointment</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Appointment (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Appointment</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.4%
+  </span>
+  <span class="absValue">
+    (14/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;// Used this instead of java.util.Date because util.Date is now deprecated.
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;public class Appointment {
+&nbsp;    private final String _appointmentId;
+&nbsp;    private final LocalDate _appointmentDate;
+&nbsp;    private final String _description;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param appointmentId the appointment ID is a unique identifier of each appointment in the list, it is set in the AppointmentServices Class.
+&nbsp;     * @return whether the appointment id is greater than 10 characters or not OR if it is null (which is redundant as it cant ever be null without specifically setting it to be so, but it is included to be explicit).
+&nbsp;     */
+&nbsp;    private boolean apptIdValidation(String appointmentId) {
+<b class="fc">&nbsp;        return appointmentId.length() &gt; 10 || appointmentId == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param appointmentDate is the date of an appointment
+&nbsp;     * @return whether the appointment date is before the current date or not OR if it is null (which is redundant as it cant ever be null without specifically setting it to be so, but it is included to be explicit).
+&nbsp;     */
+&nbsp;    private boolean apptDateValidation(LocalDate appointmentDate) {
+<b class="fc">&nbsp;        return appointmentDate.isBefore(LocalDate.now()) || appointmentDate == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param description A description of the appointment
+&nbsp;     * @return whether the description is greater than 50 characters or not OR if it is null (which is redundant as it cant ever be null without specifically setting it to be so, but it is included to be explicit).
+&nbsp;     */
+&nbsp;    private boolean descriptionValidation(String description) {
+<b class="fc">&nbsp;        return description.length() &gt; 50 || description == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Constructor
+&nbsp;    public Appointment(String appointmentId,
+&nbsp;                       String appointmentDate,
+<b class="fc">&nbsp;                       String description) {</b>
+&nbsp;
+<b class="fc">&nbsp;        if (apptIdValidation(appointmentId)) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Appointment ID is invalid!&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        LocalDate LD_appointmentDate = LocalDate.parse(appointmentDate);</b>
+<b class="fc">&nbsp;        if (apptDateValidation(LD_appointmentDate)) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Appointment Date is invalid!&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (descriptionValidation(description)) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Description is invalid!&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;        // I put these here instead of setters because a Constructor is used to set the initial value of fields. Calling other functions within it may cause unwanted results.
+<b class="fc">&nbsp;        this._appointmentId = appointmentId;</b>
+&nbsp;        //System.out.println(LD_appointmentDate);
+<b class="fc">&nbsp;        this._appointmentDate = LD_appointmentDate;</b>
+<b class="fc">&nbsp;        this._description = description;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    // getters and setters
+&nbsp;    public String get_appointmentId() {
+<b class="fc">&nbsp;        return _appointmentId;</b>
+&nbsp;    }
+&nbsp;    /* No set_appointmentID as it should not ever be updated. */
+&nbsp;
+&nbsp;    public LocalDate get_appointmentDate() {
+<b class="fc">&nbsp;        return _appointmentDate;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // not strictly necessary as it is not a requirement to change dates
+&nbsp;    /*
+&nbsp;    public void set_appointmentDate(String appointmentDate) {
+&nbsp;        LocalDate LD_appointmentDate = LocalDate.parse(appointmentDate);
+&nbsp;        if (apptDateValidation(LD_appointmentDate)) {
+&nbsp;            throw new IllegalArgumentException(&quot;Appointment Date is invalid!&quot;);
+&nbsp;        }
+&nbsp;
+&nbsp;        this._appointmentDate = LD_appointmentDate;
+&nbsp;    }
+&nbsp;     */
+&nbsp;
+&nbsp;    public String get_description() {
+<b class="fc">&nbsp;        return _description;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // not strictly necessary as it is not a requirement to change descriptions
+&nbsp;    /*
+&nbsp;    public void set_description(String description) {
+&nbsp;        if (descriptionValidation(description)) {
+&nbsp;            throw new IllegalArgumentException(&quot;Description is invalid!&quot;);
+&nbsp;        }
+&nbsp;        this._description = description;
+&nbsp;    }
+&nbsp;     */
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-10-07 20:28</div>
+</div>
+</body>
+</html>

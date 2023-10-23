@@ -1,0 +1,146 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TaskService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: TaskService (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TaskService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (16/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class TaskService {</b>
+<b class="fc">&nbsp;    public static List&lt;Task&gt; Tasks = new ArrayList&lt;Task&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;    int currentUniqueId = 0;</b>
+&nbsp;
+&nbsp;    public void addTask(String name,
+&nbsp;                        String description) {
+<b class="fc">&nbsp;        String currentUniqueIdString = Integer.toString(currentUniqueId);</b>
+&nbsp;
+<b class="fc">&nbsp;        Task task = new Task(currentUniqueIdString, name, description);</b>
+<b class="fc">&nbsp;        Tasks.add(task);</b>
+&nbsp;
+<b class="fc">&nbsp;        ++currentUniqueId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deleteTask (String taskId) {
+<b class="fc">&nbsp;        Tasks.removeIf(task -&gt; taskId.equals(task.get_taskId()));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateName (String taskId, String name) {
+<b class="fc">&nbsp;        for (Task task : Tasks) {</b>
+<b class="fc">&nbsp;            if (taskId.equals(task.get_taskId())) {</b>
+<b class="fc">&nbsp;                task.set_name(name);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Task Name!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateDescription (String taskId, String description) {
+<b class="fc">&nbsp;        for (Task task : Tasks) {</b>
+<b class="fc">&nbsp;            if (taskId.equals(task.get_taskId())) {</b>
+<b class="fc">&nbsp;                task.set_description(description);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Description!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-10-07 20:28</div>
+</div>
+</body>
+</html>

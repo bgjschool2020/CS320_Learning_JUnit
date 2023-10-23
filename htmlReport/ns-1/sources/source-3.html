@@ -1,0 +1,233 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Contact</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Contact (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Contact</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93.8%
+  </span>
+  <span class="absValue">
+    (15/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.9%
+  </span>
+  <span class="absValue">
+    (34/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;public class Contact {
+&nbsp;    private String _contactId;
+&nbsp;    private String _firstName;
+&nbsp;    private String _lastName;
+&nbsp;    private String _phoneNumber;
+&nbsp;    private String _address;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    private boolean idValidation(String _contactId) {
+<b class="fc">&nbsp;        return _contactId.length() &gt; 10 || _contactId == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean firstNameValidation(String _firstName) {
+<b class="fc">&nbsp;        return _firstName.length() &gt; 10 || _firstName == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean lastNameValidation(String _lastName) {
+<b class="fc">&nbsp;        return _lastName.length() &gt; 10 || _lastName == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean phoneNumberValidation(String _phoneNumber) {
+<b class="fc">&nbsp;        return _phoneNumber.length() != 10 || _phoneNumber == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean addressValidation(String _address) {
+<b class="fc">&nbsp;        return _address.length() &gt; 30 || _address == null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     *
+&nbsp;     * @param _contactId
+&nbsp;     * @param _firstName
+&nbsp;     * @param _lastName
+&nbsp;     * @param _phoneNumber
+&nbsp;     * @param _address
+&nbsp;     */
+&nbsp;    public Contact( String _contactId,
+&nbsp;                    String _firstName,
+&nbsp;                    String _lastName,
+&nbsp;                    String _phoneNumber,
+<b class="fc">&nbsp;                    String _address ) {</b>
+&nbsp;
+<b class="fc">&nbsp;        if ( idValidation(_contactId) ) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Contact ID is invalid!&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if ( firstNameValidation(_firstName) ) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;First Name is invalid&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if ( lastNameValidation(_lastName) ) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Last Name is invalid&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if ( phoneNumberValidation(_phoneNumber) ) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Phone Number is invalid&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if ( addressValidation(_address) ) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Address is invalid&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // I put these here instead of setters because a Constructor is used to set the initial value of fields. Calling other functions within it may cause unwanted results.
+<b class="fc">&nbsp;        this._contactId = _contactId;</b>
+<b class="fc">&nbsp;        this._firstName = _firstName;</b>
+<b class="fc">&nbsp;        this._lastName = _lastName;</b>
+<b class="fc">&nbsp;        this._phoneNumber = _phoneNumber;</b>
+<b class="fc">&nbsp;        this._address = _address;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String get_contactId() {
+<b class="fc">&nbsp;        return _contactId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void set_contactId(String _contactId) {
+&nbsp;        // added exception here so that it is hit if anything is changed after construction
+<b class="nc">&nbsp;        if ( !idValidation(_contactId) ) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Contact ID is invalid!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        this._contactId = _contactId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String get_firstName() {
+<b class="fc">&nbsp;        return _firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void set_firstName(String _firstName) {
+<b class="fc">&nbsp;        if ( firstNameValidation(_firstName) ) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;First Name is invalid&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this._firstName = _firstName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String get_lastName() {
+<b class="fc">&nbsp;        return _lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void set_lastName(String _lastName) {
+<b class="fc">&nbsp;        if ( lastNameValidation(_lastName) ) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Last Name is invalid&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this._lastName = _lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String get_phoneNumber() {
+<b class="fc">&nbsp;        return _phoneNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void set_phoneNumber(String _phoneNumber) {
+<b class="fc">&nbsp;        if ( phoneNumberValidation(_phoneNumber) ) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Phone Number is invalid&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this._phoneNumber = _phoneNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String get_address() {
+<b class="fc">&nbsp;        return _address;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void set_address(String _address) {
+<b class="fc">&nbsp;        if ( addressValidation(_address) ) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Address is invalid&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this._address = _address;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-10-07 20:28</div>
+</div>
+</body>
+</html>

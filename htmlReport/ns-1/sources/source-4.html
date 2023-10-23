@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ContactService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: ContactService (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ContactService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (24/28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class ContactService {</b>
+<b class="fc">&nbsp;    public static List&lt;Contact&gt; Contacts = new ArrayList&lt;Contact&gt;();</b>
+<b class="fc">&nbsp;    int currentUniqueId = 0;</b>
+&nbsp;
+&nbsp;    public void addContact(String firstName,
+&nbsp;                           String lastName,
+&nbsp;                           String phoneNumber,
+&nbsp;                           String address) {
+&nbsp;
+<b class="fc">&nbsp;        String currentUniqueIdString = Integer.toString(currentUniqueId);</b>
+&nbsp;
+<b class="fc">&nbsp;        Contact contact = new Contact(currentUniqueIdString, firstName, lastName, phoneNumber, address);</b>
+<b class="fc">&nbsp;        Contacts.add(contact);</b>
+&nbsp;
+<b class="fc">&nbsp;        ++currentUniqueId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void deleteContact(String contactId) {
+<b class="fc">&nbsp;        Contacts.removeIf(contact -&gt; contactId.equals(contact.get_contactId()));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;// Thought about making this more intuitive, but wasted a lot of time trying to get the tests working for it.
+&nbsp;//    public void printMenu() {
+&nbsp;//        System.out.println(
+&nbsp;//                &quot;**********************\n&quot; +
+&nbsp;//                        &quot;UPDATING CONTACT\n&quot; +
+&nbsp;//                &quot;**********************\n&quot; +
+&nbsp;//                        &quot;What do you want to update?\n&quot; +
+&nbsp;//                        &quot;(1) First Name\n&quot; +
+&nbsp;//                        &quot;(2) Last Name\n&quot; +
+&nbsp;//                        &quot;(3) Phone Number\n&quot; +
+&nbsp;//                        &quot;(4) Address\n&quot;
+&nbsp;//        );
+&nbsp;//    }
+&nbsp;
+&nbsp;    public void updateFirstName(String contactId, String firstName) {
+<b class="fc">&nbsp;        for (Contact contact : Contacts) {</b>
+<b class="fc">&nbsp;            if (contactId.equals(contact.get_contactId())) {</b>
+<b class="fc">&nbsp;                contact.set_firstName(firstName);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Contact ID!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateLastName(String contactId, String lastName) {
+<b class="fc">&nbsp;        for (Contact contact : Contacts) {</b>
+<b class="fc">&nbsp;            if (contactId.equals(contact.get_contactId())) {</b>
+<b class="fc">&nbsp;                contact.set_lastName(lastName);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Contact ID!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updatePhoneNumber(String contactId, String phoneNumber) {
+<b class="fc">&nbsp;        for (Contact contact : Contacts) {</b>
+<b class="fc">&nbsp;            if (contactId.equals(contact.get_contactId())) {</b>
+<b class="fc">&nbsp;                contact.set_phoneNumber(phoneNumber);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Contact ID!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateAddress(String contactId, String address) {
+<b class="fc">&nbsp;        for (Contact contact : Contacts) {</b>
+<b class="fc">&nbsp;            if (contactId.equals(contact.get_contactId())) {</b>
+<b class="fc">&nbsp;                contact.set_address(address);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                throw new IllegalArgumentException(&quot;There is no such Contact ID!&quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-10-07 20:28</div>
+</div>
+</body>
+</html>
